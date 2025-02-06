@@ -31,19 +31,19 @@ public class PoisonEffect : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other){
-        Healthbar healthbar = other.GetComponent<Healthbar>();
+        Healthbar healthbar = other.GetComponentInChildren<Healthbar>();
         if (healthbar != null) // Ensure the enemy has a health system
         {
             StartCoroutine(DamageOverTime(healthbar));
         }
-        else
+        else if(healthbar == null)
         {
             Debug.LogWarning(other.name + " does not have a HealthSystem!");
         }
     }
 
     private void OnTriggerExit2D(Collider2D other){
-        if (other.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy")|| other.CompareTag("Player"))
         {
             StopAllCoroutines(); // Stop applying damage when the enemy leaves
         }

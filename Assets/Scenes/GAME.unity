@@ -324,14 +324,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 186259479}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 937f0051cf590724fb0aaf889458649f, type: 3}
+  m_Script: {fileID: 11500000, guid: 316e001496abd154ea67552fb2cda60f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slider: {fileID: 186259480}
   Health: 10
   maxHealth: 10
-  slider: {fileID: 186259480}
-  player: {fileID: 1497379536}
-  offset: 0.67
 --- !u!1 &322666224
 GameObject:
   m_ObjectHideFlags: 0
@@ -568,8 +566,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poison: {fileID: 1726577512133194685, guid: 12ee2b6eba50d9245a13c6c1c5c61a85, type: 3}
-  poisonTimer: 0.15
+  poisonTimer: 0
   currentPoisonTimer: 0
+  spawnDistance: 1
 --- !u!1 &906079516
 GameObject:
   m_ObjectHideFlags: 0
