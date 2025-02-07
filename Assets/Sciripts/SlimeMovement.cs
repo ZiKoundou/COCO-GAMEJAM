@@ -8,6 +8,10 @@ public class SlimeMovement : MonoBehaviour
     private NavMeshAgent agent;
     private GameObject player;
 
+    private Vector2 playerDirection;
+    private GameObject healthBar;
+
+
     private bool canMove;
 
     
@@ -30,6 +34,7 @@ public class SlimeMovement : MonoBehaviour
         } else{
             agent.SetDestination(gameObject.transform.position);
         }
+        FacePlayer();
     }
 
     void CanMove(){
@@ -38,5 +43,16 @@ public class SlimeMovement : MonoBehaviour
 
     void LockMove(){
         canMove = false;
+    }
+
+    public void FacePlayer(){
+        playerDirection = player.transform.position-gameObject.transform.position;
+        if(playerDirection.x <0){
+            gameObject.transform.localScale = new Vector3(-1, 1, 1);
+            healthBar.transform.localScale = new Vector3(-1, 1, 1);
+        }else{
+            gameObject.transform.localScale = new Vector3(1, 1, 1);
+            healthBar.transform.localScale = new Vector3(1, 1, 1);
+        }
     }
 }

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8043709162599453021}
   - component: {fileID: 6593822840973457427}
   - component: {fileID: 6677217954629066219}
+  - component: {fileID: 6163347596843150892}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -231,6 +232,23 @@ MonoBehaviour:
   dashTime: 0.2
   dashCooldown: 1
   still: 0
+--- !u!114 &6163347596843150892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3561085638205644529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 316e001496abd154ea67552fb2cda60f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 323349634216764274}
+  Health: 10
+  maxHealth: 10
+  flashDuration: 0.01
+  flashCount: 3
 --- !u!1 &7354155450644931717
 GameObject:
   m_ObjectHideFlags: 0
@@ -345,11 +363,23 @@ PrefabInstance:
       propertyPath: m_Name
       value: Healthbar
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 99202659724827435, guid: 2d616b5bc92fa9e4199381241f41bf64, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d616b5bc92fa9e4199381241f41bf64, type: 3}
+--- !u!114 &323349634216764274 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7792911572259107833, guid: 2d616b5bc92fa9e4199381241f41bf64, type: 3}
+  m_PrefabInstance: {fileID: 7519110383227293835}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &3108920336202972014 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4862803052977679333, guid: 2d616b5bc92fa9e4199381241f41bf64, type: 3}

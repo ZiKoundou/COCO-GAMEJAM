@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.XR.WSA;
 
 public class Healthbar : MonoBehaviour
 {
@@ -13,14 +15,26 @@ public class Healthbar : MonoBehaviour
     [SerializeField]
     private float Health,maxHealth;
     private Enemy enemy;
+    
     Animator animator;
+
+    SpriteRenderer sprite;
+
+    public float flashDuration, flashCount;
+
+    
+    
+    
     
     // Start is called before the first frame update
     public void UpdateHealthBar(float currentValue, float maxValue){
         
         //Debug.Log("Current Health: " + currentValue + ", Max Health: " + maxValue);
+        if(gameObject.tag == "Enemy"){
+            slider.gameObject.SetActive(currentValue < maxValue);
+        }
         
-        //slider.gameObject.SetActive(currentValue < maxValue);
+        
         slider.maxValue = maxValue;
         slider.value = currentValue;
         
@@ -30,8 +44,11 @@ public class Healthbar : MonoBehaviour
     }
     
     public void Start(){
-        enemy = GetComponentInParent<Enemy>();
-        animator = GetComponentInParent<Animator>();
+        enemy = GetComponent<Enemy>();
+        animator = GetComponent<Animator>();
+        sprite = GetComponent<SpriteRenderer>();
+        
+        
     }
     void Update(){
         //slider.transform.position = Camera.main.WorldToScreenPoint(transform.parent.position + Offset);
@@ -41,9 +58,28 @@ public class Healthbar : MonoBehaviour
 
     public void TakeDamage(float damage){
         Health -= damage;
-        //animator.SetBool("takehit",true);
+        StartCoroutine(FlashRedOnDamage());
         if(Health == 0){
             enemy.Die();
+        }
+    }
+
+    private IEnumerator FlashRedOnDamage()
+    {
+        for (int i = 0; i < flashCount; i++)
+        {
+            Color originalColor = sprite.color;
+            // Set the color to red
+            sprite.color = Color.red;
+
+            // Wait for a short duration (flashDuration)
+            yield return new WaitForSeconds(flashDuration);
+
+            // Reset the color to the original color
+            sprite.color = Color.white;
+
+            // Wait again before flashing red again
+            yield return new WaitForSeconds(flashDuration);
         }
     }
     
