@@ -407,8 +407,8 @@ GameObject:
   - component: {fileID: 5656224352322801910}
   - component: {fileID: 3571382439931937794}
   - component: {fileID: 8861849615862152008}
-  - component: {fileID: 5475682155974854803}
   - component: {fileID: 6239267018541324552}
+  - component: {fileID: 2719431152848052276}
   m_Layer: 0
   m_Name: SmallSlime
   m_TagString: Untagged
@@ -590,18 +590,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1eb38e4e3bc6a747ae165eafe833860, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5475682155974854803
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7669076098860630618}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f320eef1ebf2fff40acc9a7d1bac74b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!195 &6239267018541324552
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -612,11 +600,11 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 2
-  m_Acceleration: 8
+  m_Speed: 20
+  m_Acceleration: 25
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 1
+  m_StoppingDistance: 0.5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -624,6 +612,18 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &2719431152848052276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7669076098860630618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5eb12d58cf6e9a340bc67d8d54e01f05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8957826073163933256
 GameObject:
   m_ObjectHideFlags: 0
@@ -669,6 +669,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poison: {fileID: 959966083016593315, guid: 652ac421ecf61964aa4558553cc2d349, type: 3}
-  poisonTimer: 0
+  poisonTimer: 0.25
   currentPoisonTimer: 0
   spawnDistance: 0
+  xOffset: 0
+  yOffset: 0

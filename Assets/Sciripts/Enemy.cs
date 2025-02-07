@@ -8,6 +8,9 @@ public class Enemy : MonoBehaviour
     public delegate void DeathEvent();
     public event DeathEvent OnDeath;
     private Healthbar healthbar;
+
+    private Animator animator;
+    
     public void Die(){
         OnDeath?.Invoke();
         Destroy(gameObject);
@@ -20,5 +23,10 @@ public class Enemy : MonoBehaviour
         } 
         // agent.isStopped = false;
         // agent.SetDestination(player.position);
+    }
+
+    public void BackToIdle(){
+        animator = gameObject.GetComponent<Animator>();
+        animator.SetBool("takehit",false);
     }
 }

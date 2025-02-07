@@ -13,6 +13,7 @@ public class Healthbar : MonoBehaviour
     [SerializeField]
     private float Health,maxHealth;
     private Enemy enemy;
+    Animator animator;
     
     // Start is called before the first frame update
     public void UpdateHealthBar(float currentValue, float maxValue){
@@ -30,7 +31,7 @@ public class Healthbar : MonoBehaviour
     
     public void Start(){
         enemy = GetComponentInParent<Enemy>();
-
+        animator = GetComponentInParent<Animator>();
     }
     void Update(){
         //slider.transform.position = Camera.main.WorldToScreenPoint(transform.parent.position + Offset);
@@ -40,11 +41,12 @@ public class Healthbar : MonoBehaviour
 
     public void TakeDamage(float damage){
         Health -= damage;
+        //animator.SetBool("takehit",true);
         if(Health == 0){
             enemy.Die();
         }
     }
-   
+    
     // Update is called once per frame
     
 }

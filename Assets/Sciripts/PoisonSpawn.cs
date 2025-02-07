@@ -9,10 +9,11 @@ public class PoisonSpawn : MonoBehaviour
     [SerializeField]
     private GameObject poison;
     [SerializeField]
-    private float poisonTimer, currentPoisonTimer;
+    public float poisonTimer, currentPoisonTimer;
     //private Vector3 poisonOffset = new Vector3(0.5f,0,0);
     private Vector2 lastPosition,movementDirection;
     public float spawnDistance = 1f;
+    public float xOffset,yOffset;
     
     
     // Start is called before the first frame update

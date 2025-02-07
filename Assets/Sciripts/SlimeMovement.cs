@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-
-public class EnemyMovement : MonoBehaviour
+public class SlimeMovement : MonoBehaviour
 {
-    // Start is called before the first frame update
+       // Start is called before the first frame update
     private NavMeshAgent agent;
     private GameObject player;
+
+    private bool canMove;
+
     
     void Start()
     {
@@ -23,8 +25,18 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player != null){
+        if (player != null && canMove){
             agent.SetDestination(player.transform.position);
-        } 
+        } else{
+            agent.SetDestination(gameObject.transform.position);
+        }
+    }
+
+    void CanMove(){
+        canMove = true;
+    }
+
+    void LockMove(){
+        canMove = false;
     }
 }
