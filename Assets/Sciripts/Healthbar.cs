@@ -61,7 +61,7 @@ public class Healthbar : MonoBehaviour
     public void TakeDamage(float damage){
         Health -= damage;
         StartCoroutine(FlashRedOnDamage());
-        if(Health == 0 && gameObject.tag == "Enemy"){
+        if(Health <= 0 && gameObject.tag == "Enemy"){
             enemy.Die();
         }
     }
