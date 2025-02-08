@@ -21,7 +21,7 @@ public class SceneTransition : MonoBehaviour
     {
         sceneTransition.SetTrigger("End");
         yield return new WaitForSeconds(1);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +1);
+        SceneManager.LoadScene("game");
         sceneTransition.SetTrigger("Start");
     }
 

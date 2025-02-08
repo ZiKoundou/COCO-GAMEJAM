@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Callbacks;
+//using UnityEditor.Callbacks;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -15,11 +15,12 @@ public class playermovement : MonoBehaviour
     private Animator animator;
     private bool canDash = true;
     private bool isDashing = false;
-    public bool still;
+    // public bool still;
 
+    public Healthbar healthbar;
     PoisonSpawn poisonSpawn;
     // Start is called before the first frame update
-
+    public GameOverManager gameOverManager;
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -60,6 +61,9 @@ public class playermovement : MonoBehaviour
     {
         if(!isDashing){
             Move();
+        }
+        if(healthbar.GetHealth() <= 0){
+            gameOverManager.GameOver();
         }
    
     }

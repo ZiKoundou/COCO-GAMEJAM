@@ -172,8 +172,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 3395443752867634874}
-  Health: 5
-  maxHealth: 5
+  Health: 3.5
+  maxHealth: 3.5
   flashDuration: 0.1
   flashCount: 3
 --- !u!114 &4946054352786013066

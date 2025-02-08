@@ -38,6 +38,7 @@ public class SlimeMovement : MonoBehaviour
             agent.SetDestination(gameObject.transform.position);
         }
         FacePlayer();
+        transform.rotation = Quaternion.identity;
     }
 
     void CanMove(){
