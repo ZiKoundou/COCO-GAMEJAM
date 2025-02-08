@@ -20,6 +20,7 @@ public class SlimeMovement : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
+        healthBar = transform.Find("HealthBar").gameObject;
         player = GameObject.FindGameObjectWithTag("Player");
         if(player == null){
             Debug.Log("player not found :(");
