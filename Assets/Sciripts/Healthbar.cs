@@ -24,7 +24,9 @@ public class Healthbar : MonoBehaviour
 
     
     
-    
+    public float GetHealth(){
+        return Health;
+    }
     
     // Start is called before the first frame update
     public void UpdateHealthBar(float currentValue, float maxValue){
@@ -59,11 +61,8 @@ public class Healthbar : MonoBehaviour
     public void TakeDamage(float damage){
         Health -= damage;
         StartCoroutine(FlashRedOnDamage());
-        if(Health == 0){
+        if(Health == 0 && gameObject.tag == "Enemy"){
             enemy.Die();
-            if(gameObject.tag == "Player"){
-                Destroy(gameObject);
-            }
         }
     }
 

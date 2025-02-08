@@ -38,6 +38,7 @@ public class ShroomMovement : MonoBehaviour
         } 
 
         FacePlayer();
+        transform.rotation = Quaternion.identity;
     }
 
     public void FacePlayer(){

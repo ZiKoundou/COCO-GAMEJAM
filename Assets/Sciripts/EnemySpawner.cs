@@ -16,6 +16,9 @@ public class EnemySpawner : MonoBehaviour
     private int currentWaveIndex = 0;
     private int enemiesAlive = 0;
 
+    public int GetWaveIndex(){
+        return currentWaveIndex;
+    }   
     
     // Start is called before the first frame update
     void Start()

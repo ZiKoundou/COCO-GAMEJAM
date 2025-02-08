@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -12,6 +13,9 @@ public class EnemyMovement : MonoBehaviour
     private GameObject healthBar;
     private Healthbar health;
     
+    bool canTakeDamage = true;
+    [SerializeField]
+    private float damageCooldown = 0.5f; 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -31,8 +35,9 @@ public class EnemyMovement : MonoBehaviour
         if (player != null){
             agent.SetDestination(player.transform.position);
         } 
-
+        
         FacePlayer();
+        transform.rotation = Quaternion.identity;
     }
 
     public void FacePlayer(){
@@ -49,10 +54,29 @@ public class EnemyMovement : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other){
         health = other.gameObject.GetComponentInChildren<Healthbar>();
         if(other.gameObject.tag == "Player" && health != null){
-        health.TakeDamage(1);
-    } 
+            health.TakeDamage(1);
+            StartCoroutine(DamageCooldown());
+        } 
+    }
+
+    IEnumerator DamageCooldown()
+    {
+        canTakeDamage = false;
+        yield return new WaitForSeconds(damageCooldown);
+        canTakeDamage = true;
+    }
+    // private void OnCollisionEnter2D(Collision2D other){
+    //     health = other.gameObject.GetComponentInChildren<Healthbar>();
+    //     if(other.gameObject.tag == "Player" && health != null){
+    //         health.TakeDamage(1);
+    //         StartCoroutine(DamageCooldown());
+    //     }
+    //     agent.SetDestination(player.transform.position);
+    // }
+
+
     // agent.isStopped = false;
     // agent.SetDestination(player.position);
-    }
+    
 
 }

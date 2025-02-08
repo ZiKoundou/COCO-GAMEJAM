@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Chicken
   - Slime
+  - SpawnManager
   layers:
   - Default
   - TransparentFX
@@ -56,4 +57,7 @@ TagManager:
     locked: 0
   - name: Projectile
     uniqueID: 2895382231
+    locked: 0
+  - name: GameOverScreen
+    uniqueID: 3738360019
     locked: 0
