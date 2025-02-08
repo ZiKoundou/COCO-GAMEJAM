@@ -61,6 +61,9 @@ public class Healthbar : MonoBehaviour
         StartCoroutine(FlashRedOnDamage());
         if(Health == 0){
             enemy.Die();
+            if(gameObject.tag == "Player"){
+                Destroy(gameObject);
+            }
         }
     }
 

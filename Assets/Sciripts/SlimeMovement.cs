@@ -10,6 +10,7 @@ public class SlimeMovement : MonoBehaviour
 
     private Vector2 playerDirection;
     private GameObject healthBar;
+    private Healthbar health;
 
 
     private bool canMove;
@@ -25,6 +26,7 @@ public class SlimeMovement : MonoBehaviour
         if(player == null){
             Debug.Log("player not found :(");
         }
+        health = healthBar.GetComponentInChildren<Healthbar>();
     }
 
     // Update is called once per frame
@@ -55,5 +57,14 @@ public class SlimeMovement : MonoBehaviour
             gameObject.transform.localScale = new Vector3(1, 1, 1);
             healthBar.transform.localScale = new Vector3(1, 1, 1);
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other){
+        health = other.gameObject.GetComponentInChildren<Healthbar>();
+        if(other.gameObject.tag == "Player" && health != null){
+        health.TakeDamage(1);
+    } 
+    // agent.isStopped = false;
+    // agent.SetDestination(player.position);
     }
 }

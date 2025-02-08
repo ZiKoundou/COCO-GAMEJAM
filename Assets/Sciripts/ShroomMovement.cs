@@ -2,32 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-
-public class EnemyMovement : MonoBehaviour
+public class ShroomMovement : MonoBehaviour
 {
-    // Start is called before the first frame update
-    private NavMeshAgent agent;
-    private GameObject player;
+    NavMeshAgent agent;
+    GameObject player;
+    bool CanShoot = false;
     private Vector2 playerDirection;
     private GameObject healthBar;
-    private Healthbar health;
+
+    ShroomShoot shroomShoot;
     
+    
+    // Start is called before the first frame update
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
-        agent.updateRotation = false;
-        agent.updateUpAxis = false;
+        shroomShoot = GetComponent<ShroomShoot>();
         player = GameObject.FindGameObjectWithTag("Player");
         if(player == null){
             Debug.Log("player not found :(");
         }
-        healthBar = transform.Find("HealthBar").gameObject;
-        health = healthBar.GetComponentInChildren<Healthbar>();
+        agent = GetComponent<NavMeshAgent>();
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        float distanceFromPlayer = Vector3.Distance(gameObject.transform.position, player.transform.position);
+        if(agent.stoppingDistance >= distanceFromPlayer){
+            shroomShoot.Shoot();
+        }
         if (player != null){
             agent.SetDestination(player.transform.position);
         } 
@@ -45,14 +50,5 @@ public class EnemyMovement : MonoBehaviour
             healthBar.transform.localScale = new Vector3(1, 1, 1);
         }
     }
-
-    private void OnTriggerEnter2D(Collider2D other){
-        health = other.gameObject.GetComponentInChildren<Healthbar>();
-        if(other.gameObject.tag == "Player" && health != null){
-        health.TakeDamage(1);
-    } 
-    // agent.isStopped = false;
-    // agent.SetDestination(player.position);
-    }
-
 }
+
