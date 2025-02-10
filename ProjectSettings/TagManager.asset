@@ -9,6 +9,7 @@ TagManager:
   - Chicken
   - Slime
   - SpawnManager
+  - MusicManager
   layers:
   - Default
   - TransparentFX

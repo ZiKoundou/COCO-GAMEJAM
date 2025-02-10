@@ -8,12 +8,16 @@ public class MainMenu : MonoBehaviour
     // Start is called before the first frame update
     
     public SceneTransition sceneTransition;
+    public MusicManager musicManager;
+
     void Start(){
         sceneTransition = FindObjectOfType<SceneTransition>();
+        //musicManager = GameObject.FindGameObjectWithTag("MusicManager").GetComponent<MusicManager>();
     }
 
     public void PlayGame(){
         sceneTransition.NextScene();
+        musicManager.PlayFightTheme();
     }
 
     public void QuitGame()
