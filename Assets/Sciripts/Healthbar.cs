@@ -22,7 +22,7 @@ public class Healthbar : MonoBehaviour
 
     public float flashDuration, flashCount;
 
-    
+    SoundEffectManager soundEffectManager;
     
     public float GetHealth(){
         return Health;
@@ -49,7 +49,7 @@ public class Healthbar : MonoBehaviour
         enemy = GetComponent<Enemy>();
         animator = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
-        
+        soundEffectManager = GameObject.FindAnyObjectByType<SoundEffectManager>();
         
     }
     void Update(){
@@ -60,8 +60,10 @@ public class Healthbar : MonoBehaviour
 
     public void TakeDamage(float damage){
         Health -= damage;
+        soundEffectManager.PlayHitSound();
         StartCoroutine(FlashRedOnDamage());
         if(Health <= 0 && gameObject.tag == "Enemy"){
+            
             enemy.Die();
         }
     }
