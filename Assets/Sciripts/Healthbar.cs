@@ -60,7 +60,10 @@ public class Healthbar : MonoBehaviour
 
     public void TakeDamage(float damage){
         Health -= damage;
-        soundEffectManager.PlayHitSound();
+        if(soundEffectManager){
+            soundEffectManager.PlayHitSound();
+        }
+        
         StartCoroutine(FlashRedOnDamage());
         if(Health <= 0 && gameObject.tag == "Enemy"){
             

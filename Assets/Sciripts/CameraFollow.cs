@@ -13,7 +13,11 @@ public class CameraFollow : MonoBehaviour
 
     [SerializeField]
     private GameObject target;
-    
+    void Start()
+    {
+        target = GameObject.FindGameObjectWithTag("Player");
+    }
+
     // Update is called once per frame
     void Update(){
         Vector3 targetPosition = target.transform.position + offset;
