@@ -975,8 +975,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   songs:
-  - {fileID: 8300000, guid: 1cbb6c2ca0d60b842b4cb24b3db12df2, type: 3}
   - {fileID: 8300000, guid: 0673180fcfb17c94bac8e252a315485d, type: 3}
+  - {fileID: 8300000, guid: 1cbb6c2ca0d60b842b4cb24b3db12df2, type: 3}
 --- !u!1 &1938873033
 GameObject:
   m_ObjectHideFlags: 0
@@ -1138,7 +1138,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.517
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1236,7 +1236,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5587341857943711226, guid: 8be31ac3de9a0aa4ebc7e64d68c5b1e7, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7326306588637201136, guid: 8be31ac3de9a0aa4ebc7e64d68c5b1e7, type: 3}
       propertyPath: m_RaycastTarget

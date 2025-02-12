@@ -15,6 +15,8 @@ public class playermovement : MonoBehaviour
     private Animator animator;
     private bool canDash = true;
     private bool isDashing = false;
+
+    //public GameObject pauseScreen;
     // public bool still;
 
     public Healthbar healthbar;
@@ -39,6 +41,12 @@ public class playermovement : MonoBehaviour
             StartCoroutine(Dash());
         }
     }
+
+    private void OnPause(){
+        gameOverManager.pauseScreen.SetActive(true); // Show Game Over screen
+        Time.timeScale = 0f; // Pause the game
+    }
+    
 
     private IEnumerator Dash(){
         canDash = false;

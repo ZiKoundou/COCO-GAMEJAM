@@ -6,10 +6,12 @@ using UnityEngine.SceneManagement;
 public class GameOverManager : MonoBehaviour
 {
     public GameObject gameOverScreen; // Assign this in the Inspector
+    public GameObject pauseScreen;
 
     void Start()
     {
         gameOverScreen.SetActive(false); // Hide game over screen at start
+        pauseScreen.SetActive(false);
     }
 
     public void GameOver()
@@ -25,6 +27,14 @@ public class GameOverManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // Reload current scene
         
     }
+
+    public void ResumeGame()
+    {
+        Debug.Log("Resume Button Clicked");
+        Time.timeScale = 1f; // Resume time
+        pauseScreen.SetActive(false);
+    }
+
 
     public void ReturnToMainMenu()
     {
